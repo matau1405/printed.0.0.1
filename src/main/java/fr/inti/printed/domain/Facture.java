@@ -231,4 +231,26 @@ public class Facture implements Serializable {
             ", motantPaiement=" + getMotantPaiement() +
             "}";
     }
+
+
+
+  public void setCodeFixe(Client client) {
+        this.code = "Commande de : " + client.getNom();
+    }
+
+public void setDetailsFixe(ligneDeCommandes[] listLDC){
+    String detailsComd = ""
+    for(i=0, i<listLDC.size(),i++ ){
+        detailsComd = detailsComd + listLDC[i].toString();
+    }
+        this.details = "Détails de votre commande : " +detailsComd ;
+
+    }
+public void setDateFixe (){
+this.date = SystemClockFactory.getDatetime()
+    }
+   public void setMotantPaiement(ligneDeCommandes[] listLDC) {
+        this.motantPaiement =  calculPrixPanier(listLDC);
+    }
+
 }

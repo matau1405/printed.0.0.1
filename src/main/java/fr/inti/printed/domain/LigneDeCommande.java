@@ -41,6 +41,7 @@ public class LigneDeCommande implements Serializable {
     @JsonIgnoreProperties("ligneDeCommandes")
     private Produit produit;
 
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
         return id;
@@ -61,6 +62,7 @@ public class LigneDeCommande implements Serializable {
 
     public void setQuantite(Integer quantite) {
         this.quantite = quantite;
+        this.setPtixTotal(calculPrixTotal(this).getPtixTotal());
     }
 
     public BigDecimal getPtixTotal() {
@@ -128,4 +130,27 @@ public class LigneDeCommande implements Serializable {
             ", statut='" + getStatut() + "'" +
             "}";
     }
+
+    public LigneDeCommande ajoutPanier (Produit produit) {
+        return new ligneDeCommandes (1 , produit.getPrix(), StatutArticleComd DISPONIBLE , produit);
+    }
+
+
+public ligneDeCommandes calculPrixTotal (LigneDeCommande ldc){
+        ldc.setPtixTotal(ldc.getQuantite() * ldc.getProduit().getPrix());
+        return ldc;
+}
+
+public BigDecimal calculPrixPanier (ligneDeCommandes[] listLDC){
+    BigDecimal prixPanier;
+    prixPanier = 0;
+    for(i=0 , i<listLDC.size(),i++){
+        prixPanier = prixPanier + listLDC[i].getPtixTotal();
+    }
+    return prixPanier;
+}
+
+
+
+
 }
