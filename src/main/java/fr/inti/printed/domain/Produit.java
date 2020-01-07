@@ -212,11 +212,34 @@ public class Produit implements Serializable {
             "}";
     }
 
-    public Produit personnaliserProduit (Produit produit,byte[] imagePerso, String image_perso_content_type) {
+    
+    
+    public Produit() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Produit(String id, @NotNull String nom, String description, @NotNull @DecimalMin("0") BigDecimal prix,
+			@NotNull Taille taille, byte[] image, String imageContentType, Boolean personnalisable, byte[] imagePerso,
+			String imagePersoContentType) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.description = description;
+		this.prix = prix;
+		this.taille = taille;
+		this.image = image;
+		this.imageContentType = imageContentType;
+		this.personnalisable = personnalisable;
+		this.imagePerso = imagePerso;
+		this.imagePersoContentType = imagePersoContentType;
+	}
+
+	public Produit personnaliserProduit (Produit produit,byte[] imagePerso, String image_perso_content_type) {
     if (produit.personnalisable == false){
         return produit;
     }
-    return new Produit (produit.getNom(), produit.getDescription(), produit.getPrix(), produit.getTaille(), produit.getImage(),
+    return new Produit (produit.getNom(), produit.getDescription(), image_perso_content_type, produit.getPrix(), produit.getTaille(), produit.getImage(),
     produit.getImageContentType(), produit.isPersonnalisable(), imagePerso , image_perso_content_type);
     }
 
