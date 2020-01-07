@@ -131,21 +131,43 @@ public class LigneDeCommande implements Serializable {
             "}";
     }
 
-    public LigneDeCommande ajoutPanier (Produit produit) {
-        return new ligneDeCommandes (1 , produit.getPrix(), StatutArticleComd DISPONIBLE , produit);
+    
+    
+    
+    
+    public LigneDeCommande() {
+		super();
+	}
+
+	public LigneDeCommande(String id, @NotNull @Min(0) Integer quantite, @NotNull @DecimalMin("0") BigDecimal ptixTotal,
+			@NotNull StatutArticleComd statut, Produit produit) {
+		super();
+		this.id = id;
+		this.quantite = quantite;
+		this.ptixTotal = ptixTotal;
+		this.statut = statut;
+		this.produit = produit;
+	}
+
+	public LigneDeCommande ajoutPanier (Produit produit) {
+        return new LigneDeCommande (id, 1 , produit.getPrix(), StatutArticleComd.DISPONIBLE , produit);
     }
 
 
-public ligneDeCommandes calculPrixTotal (LigneDeCommande ldc){
-        ldc.setPtixTotal(ldc.getQuantite() * ldc.getProduit().getPrix());
+public LigneDeCommande calculPrixTotal (LigneDeCommande ldc){
+	BigDecimal quant = new BigDecimal(ldc.getQuantite());
+	BigDecimal res = new BigDecimal(0);
+	res = ldc.produit.getPrix().multiply(quant);
+	
+        ldc.setPtixTotal(res);
         return ldc;
 }
 
-public BigDecimal calculPrixPanier (ligneDeCommandes[] listLDC){
-    BigDecimal prixPanier;
-    prixPanier = 0;
-    for(i=0 , i<listLDC.size(),i++){
-        prixPanier = prixPanier + listLDC[i].getPtixTotal();
+public BigDecimal calculPrixPanier (LigneDeCommande[] listLDC){
+    BigDecimal prixPanier = new BigDecimal(0);
+    
+    for(int i=0 ;i<listLDC.length; i++){
+        prixPanier = prixPanier.add(listLDC[i].getPtixTotal());
     }
     return prixPanier;
 }

@@ -238,19 +238,20 @@ public class Facture implements Serializable {
         this.code = "Commande de : " + client.getNom();
     }
 
-public void setDetailsFixe(ligneDeCommandes[] listLDC){
-    String detailsComd = ""
-    for(i=0, i<listLDC.size(),i++ ){
+public void setDetailsFixe(LigneDeCommande[] listLDC){
+    String detailsComd = "";
+    for(int i=0; i<listLDC.length;i++ ){
         detailsComd = detailsComd + listLDC[i].toString();
     }
         this.details = "Détails de votre commande : " +detailsComd ;
 
     }
-public void setDateFixe (){
-this.date = SystemClockFactory.getDatetime()
-    }
-   public void setMotantPaiement(ligneDeCommandes[] listLDC) {
-        this.motantPaiement =  calculPrixPanier(listLDC);
+
+   public void setMotantPaiementFixe(LigneDeCommande[] listLDC) {
+        this.motantPaiement =  listLDC[0].calculPrixPanier(listLDC);
     }
 
+
 }
+
+
