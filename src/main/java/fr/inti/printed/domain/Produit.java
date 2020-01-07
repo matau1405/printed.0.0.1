@@ -211,4 +211,22 @@ public class Produit implements Serializable {
             ", imagePersoContentType='" + getImagePersoContentType() + "'" +
             "}";
     }
+
+    public Produit personnaliserProduit (Produit produit,byte[] imagePerso, String image_perso_content_type) {
+    if (produit.personnalisable == false){
+        return produit;
+    }
+    return new Produit (produit.getNom(), produit.getDescription(), produit.getPrix(), produit.getTaille(), produit.getImage(),
+    produit.getImageContentType(), produit.isPersonnalisable(), imagePerso , image_perso_content_type);
+    }
+
+
+
+
+
+
+
+
+
+
 }
