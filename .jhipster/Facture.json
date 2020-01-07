@@ -1,0 +1,79 @@
+{
+    "name": "Facture",
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "details",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "statut",
+            "fieldType": "StatutFacture",
+            "fieldValues": "PAYE,PUBLIE,ANNULE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "modePaiement",
+            "fieldType": "Mode",
+            "fieldValues": "CARTE_DE_CREDIT,ESPECES,PAYPAL",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "datePaiement",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "motantPaiement",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "expedition",
+            "otherEntityRelationshipName": "facture",
+            "relationshipName": "expedition"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "client",
+            "otherEntityRelationshipName": "commande",
+            "relationshipValidateRules": "required",
+            "relationshipName": "client",
+            "otherEntityField": "email"
+        }
+    ],
+    "changelogDate": "20200106143011",
+    "entityTableName": "facture",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

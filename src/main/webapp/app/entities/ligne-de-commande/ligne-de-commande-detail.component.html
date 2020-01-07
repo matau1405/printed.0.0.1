@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ligneDeCommande">
+            <h2><span>Ligne De Commande</span> {{ligneDeCommande.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Quantite</span></dt>
+                <dd>
+                    <span>{{ligneDeCommande.quantite}}</span>
+                </dd>
+                <dt><span>Ptix Total</span></dt>
+                <dd>
+                    <span>{{ligneDeCommande.ptixTotal}}</span>
+                </dd>
+                <dt><span>Statut</span></dt>
+                <dd>
+                    <span>{{ligneDeCommande.statut}}</span>
+                </dd>
+                <dt><span>Produit</span></dt>
+                <dd>
+                    <div *ngIf="ligneDeCommande.produit">
+                        <a [routerLink]="['/produit', ligneDeCommande.produit?.id, 'view']">{{ligneDeCommande.produit?.nom}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ligne-de-commande', ligneDeCommande.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

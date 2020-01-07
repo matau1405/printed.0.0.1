@@ -1,0 +1,91 @@
+/* Online fashion store */
+
+/** Product sold by the Online store */
+
+
+
+
+entity Produit {
+    nom String required
+    description String
+    prix BigDecimal required min(0)
+    taille Taille required
+    image ImageBlob
+	personnalisable Boolean
+	imagePerso ImageBlob
+}
+
+enum Taille {
+    S, M, L, XL, XXL
+}
+
+
+
+entity Client {
+    nom String required
+    prenom String required
+    genre Genre required
+    email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+    tel String required
+    addresseLigne1 String required
+    addresseLigne2 String
+    ville String required
+    pays String required
+}
+
+enum Genre {
+    HOMME, FEMME, AUTRE
+}
+
+
+
+
+entity LigneDeCommande {
+    quantite Integer required min(0)
+    ptixTotal BigDecimal required min(0)
+    statut StatutArticleComd required
+}
+
+enum StatutArticleComd {
+    DISPONIBLE, EN_RUPTURE_DE_STOCK, COMMANDE_DIFFEREE
+}
+
+entity Facture {
+    code String required
+    date Instant required
+    details String
+    statut StatutFacture required
+    modePaiement Mode required
+    DatePaiement Instant required
+    motantPaiement BigDecimal required
+}
+
+enum StatutFacture {
+    PAYE, PUBLIE, ANNULE
+}
+
+enum Mode {
+	CARTE_DE_CREDIT, ESPECES, PAYPAL
+}
+
+entity Expedition {
+    CodeSuivi String
+    date Instant required
+    details String
+}
+
+relationship OneToOne {
+    Client{user(login) required} to User
+}
+
+relationship ManyToOne {
+	LigneDeCommande{Produit(nom) required} to Produit
+}
+
+relationship OneToMany {
+   Client{commande} to Facture{Client(email) required},
+   Facture{Expedition} to Expedition{Facture(code) required},
+}
+
+service * with serviceClass
+paginate Produit, Client, Facture, Expedition, LigneDeCommande with pagination

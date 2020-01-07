@@ -1,0 +1,51 @@
+{
+    "name": "LigneDeCommande",
+    "fields": [
+        {
+            "fieldName": "quantite",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "ptixTotal",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required",
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "statut",
+            "fieldType": "StatutArticleComd",
+            "fieldValues": "DISPONIBLE,EN_RUPTURE_DE_STOCK,COMMANDE_DIFFEREE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "produit",
+            "otherEntityRelationshipName": "ligneDeCommande",
+            "relationshipValidateRules": "required",
+            "relationshipName": "produit",
+            "otherEntityField": "nom"
+        }
+    ],
+    "changelogDate": "20200106143010",
+    "entityTableName": "ligne_de_commande",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

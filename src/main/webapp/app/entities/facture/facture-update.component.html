@@ -1,0 +1,128 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-facture-heading">Create or edit a Facture</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_code">Code</label>
+                    <input type="text" class="form-control" name="code" id="field_code"
+                           formControlName="code"/>
+                    <div *ngIf="editForm.get('code').invalid && (editForm.get('code').dirty || editForm.get('code').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('code').errors.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_date">Date</label>
+                    <div class="d-flex">
+                        <input id="field_date" type="datetime-local" class="form-control" name="date" formControlName="date" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('date').invalid && (editForm.get('date').dirty || editForm.get('date').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('date').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('date').errors?.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_details">Details</label>
+                    <input type="text" class="form-control" name="details" id="field_details"
+                           formControlName="details"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_statut">Statut</label>
+                    <select class="form-control" name="statut" formControlName="statut" id="field_statut">
+                        <option value="PAYE">PAYE</option>
+                        <option value="PUBLIE">PUBLIE</option>
+                        <option value="ANNULE">ANNULE</option>
+                    </select>
+                    <div *ngIf="editForm.get('statut').invalid && (editForm.get('statut').dirty || editForm.get('statut').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('statut').errors.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modePaiement">Mode Paiement</label>
+                    <select class="form-control" name="modePaiement" formControlName="modePaiement" id="field_modePaiement">
+                        <option value="CARTE_DE_CREDIT">CARTE_DE_CREDIT</option>
+                        <option value="ESPECES">ESPECES</option>
+                        <option value="PAYPAL">PAYPAL</option>
+                    </select>
+                    <div *ngIf="editForm.get('modePaiement').invalid && (editForm.get('modePaiement').dirty || editForm.get('modePaiement').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('modePaiement').errors.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_datePaiement">Date Paiement</label>
+                    <div class="d-flex">
+                        <input id="field_datePaiement" type="datetime-local" class="form-control" name="datePaiement" formControlName="datePaiement" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('datePaiement').invalid && (editForm.get('datePaiement').dirty || editForm.get('datePaiement').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('datePaiement').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('datePaiement').errors?.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_motantPaiement">Motant Paiement</label>
+                    <input type="number" class="form-control" name="motantPaiement" id="field_motantPaiement"
+                           formControlName="motantPaiement"/>
+                    <div *ngIf="editForm.get('motantPaiement').invalid && (editForm.get('motantPaiement').dirty || editForm.get('motantPaiement').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('motantPaiement').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('motantPaiement')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_client">Client</label>
+                    <select class="form-control" id="field_client" name="client" formControlName="client">
+                        <option *ngIf="!editForm.get('client').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="clientOption.id === editForm.get('client').value?.id ? editForm.get('client').value : clientOption" *ngFor="let clientOption of clients; trackBy: trackClientById">{{clientOption.email}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('client').invalid && (editForm.get('client').dirty || editForm.get('client').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('client').errors.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

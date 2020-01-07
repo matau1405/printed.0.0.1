@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="expedition">
+            <h2><span>Expedition</span> {{expedition.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Code Suivi</span></dt>
+                <dd>
+                    <span>{{expedition.codeSuivi}}</span>
+                </dd>
+                <dt><span>Date</span></dt>
+                <dd>
+                    <span>{{expedition.date}}</span>
+                </dd>
+                <dt><span>Details</span></dt>
+                <dd>
+                    <span>{{expedition.details}}</span>
+                </dd>
+                <dt><span>Facture</span></dt>
+                <dd>
+                    <div *ngIf="expedition.facture">
+                        <a [routerLink]="['/facture', expedition.facture?.id, 'view']">{{expedition.facture?.code}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/expedition', expedition.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

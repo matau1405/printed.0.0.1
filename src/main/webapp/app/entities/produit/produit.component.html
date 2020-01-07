@@ -1,0 +1,88 @@
+<div>
+    <h2 id="page-heading">
+        <span>Produits</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-produit" [routerLink]="['/produit/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Produit
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="produits?.length === 0">
+        <span>No produits found</span>
+    </div>
+    <div class="table-responsive" *ngIf="produits?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="nom"><span>Nom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="description"><span>Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="prix"><span>Prix</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="taille"><span>Taille</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="image"><span>Image</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="personnalisable"><span>Personnalisable</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="imagePerso"><span>Image Perso</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let produit of produits ;trackBy: trackId">
+                <td><a [routerLink]="['/produit', produit.id, 'view' ]">{{produit.id}}</a></td>
+                <td>{{produit.nom}}</td>
+                <td>{{produit.description}}</td>
+                <td>{{produit.prix}}</td>
+                <td>{{produit.taille}}</td>
+                <td>
+                    <a *ngIf="produit.image" (click)="openFile(produit.imageContentType, produit.image)">
+                        <img [src]="'data:' + produit.imageContentType + ';base64,' + produit.image" style="max-height: 30px;" alt="produit image"/>
+                    </a>
+                    <span *ngIf="produit.image">{{produit.imageContentType}}, {{byteSize(produit.image)}}</span>
+                </td>
+                <td>{{produit.personnalisable}}</td>
+                <td>
+                    <a *ngIf="produit.imagePerso" (click)="openFile(produit.imagePersoContentType, produit.imagePerso)">
+                        <img [src]="'data:' + produit.imagePersoContentType + ';base64,' + produit.imagePerso" style="max-height: 30px;" alt="produit image"/>
+                    </a>
+                    <span *ngIf="produit.imagePerso">{{produit.imagePersoContentType}}, {{byteSize(produit.imagePerso)}}</span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/produit', produit.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/produit', produit.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/produit', { outlets: { popup: produit.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="produits?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
