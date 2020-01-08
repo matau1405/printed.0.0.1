@@ -1,12 +1,14 @@
 <div>
     <h2 id="page-heading">
         <span>Ligne De Commandes</span>
+        <li  *jhiHasAnyAuthority="'ROLE_ADMIN'">
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-ligne-de-commande" [routerLink]="['/ligne-de-commande/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
             Create a new Ligne De Commande
             </span>
         </button>
+    </li>
     </h2>
     <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>

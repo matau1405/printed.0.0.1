@@ -1,12 +1,14 @@
 <div>
     <h2 id="page-heading">
         <span>Produits</span>
+        <li  *jhiHasAnyAuthority="'ROLE_ADMIN'">
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-produit" [routerLink]="['/produit/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
             Create a new Produit
             </span>
         </button>
+        </li>
     </h2>
     <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
@@ -63,15 +65,19 @@
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline">Edit</span>
                         </button>
-                        <button type="submit"
-                                [routerLink]="['/produit', { outlets: { popup: produit.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
-                            <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline">Delete</span>
-                        </button>
-                    </div>
+                        <li  *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                            <button type="submit"
+                                    [routerLink]="['/produit', { outlets: { popup: produit.id + '/delete'} }]"
+                                    replaceUrl="true"
+                                    queryParamsHandling="merge"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </li>
+                            </button>
+                       
+                        
+                        </div>
                 </td>
             </tr>
             </tbody>
