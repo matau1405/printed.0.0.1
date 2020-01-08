@@ -62,7 +62,7 @@ public class LigneDeCommande implements Serializable {
 
     public void setQuantite(Integer quantite) {
         this.quantite = quantite;
-        this.setPtixTotal(calculPrixTotal(this).getPtixTotal());
+        //this.setPtixTotal(calculPrixTotal(this).getPtixTotal());
     }
 
     public BigDecimal getPtixTotal() {
