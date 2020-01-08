@@ -180,3 +180,32 @@ ui bootstrap tweaks
 }
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */
+
+#container h1 {
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+form {
+  width: 100%;
+  padding: 30px;
+  border: 1px solid #f1f1f1;
+  background: #f6d365;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form-control {
+  background-color: #ede59a;
+  font-weight: bold;
+}
+
+.jh-card {
+  background-color: #ed8240 !important;
+}
+
+.modal-header {
+  background-color: #d5c455;
+}
+.modal-body {
+  background-color: #ede59a;
+}

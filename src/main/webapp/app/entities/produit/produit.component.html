@@ -18,12 +18,14 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+
+                <!--<th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+
+            <th scope="col"  jhiSortBy="image"><span>Image</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="nom"><span>Nom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="description"><span>Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="prix"><span>Prix</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="taille"><span>Taille</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="image"><span>Image</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="personnalisable"><span>Personnalisable</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="imagePerso"><span>Image Perso</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
@@ -31,17 +33,20 @@
             </thead>
             <tbody>
             <tr *ngFor="let produit of produits ;trackBy: trackId">
-                <td><a [routerLink]="['/produit', produit.id, 'view' ]">{{produit.id}}</a></td>
-                <td>{{produit.nom}}</td>
-                <td>{{produit.description}}</td>
-                <td>{{produit.prix}}</td>
-                <td>{{produit.taille}}</td>
+
+                <!--<td><a [routerLink]="['/produit', produit.id, 'view' ]">{{produit.id}}</a></td>-->
+                
                 <td>
                     <a *ngIf="produit.image" (click)="openFile(produit.imageContentType, produit.image)">
                         <img [src]="'data:' + produit.imageContentType + ';base64,' + produit.image" style="max-height: 30px;" alt="produit image"/>
                     </a>
                     <span *ngIf="produit.image">{{produit.imageContentType}}, {{byteSize(produit.image)}}</span>
                 </td>
+                <td>{{produit.nom}}</td>
+                <td>{{produit.description}}</td>
+                <td>{{produit.prix}}</td>
+                <td>{{produit.taille}}</td>
+
                 <td>{{produit.personnalisable}}</td>
                 <td>
                     <a *ngIf="produit.imagePerso" (click)="openFile(produit.imagePersoContentType, produit.imagePerso)">
