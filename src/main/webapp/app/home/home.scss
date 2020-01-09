@@ -2,11 +2,80 @@
 Main page styles
 ========================================================================== */
 
-.hipster {
+.carousel1 {
+  height: 500px;
+  width: 500px;
   display: inline-block;
-  width: 347px;
-  height: 497px;
-  background: url('../../content/images/jhipster_family_member_1.svg') no-repeat center top;
+  vertical-align: middle;
+  background: url('F:\Workspace\ProjetECommerce\printed.0.0.1\src\main\webapp\content\images\Couleur.jpg') no-repeat center center;
+  background-size: contain;
+}
+
+.carousel2 {
+  height: 500px;
+  width: 500px;
+  display: inline-block;
+  vertical-align: middle;
+  background: url('F:\Workspace\ProjetECommerce\printed.0.0.1\src\main\webapp\content\images\t_shirt_masculin_carousel.jpg') no-repeat
+    center center;
+  background-size: contain;
+}
+
+.carousel3 {
+  height: 500px;
+  width: 500px;
+  display: inline-block;
+  vertical-align: middle;
+  background: url('F:\Workspace\ProjetECommerce\printed.0.0.1\src\main\webapp\content\images\Couleur.jpg') no-repeat center center;
+  background-size: contain;
+}
+
+.carousel4 {
+  height: 500px;
+  width: 500px;
+  display: inline-block;
+  vertical-align: middle;
+  background: url('F:\Workspace\ProjetECommerce\printed.0.0.1\src\main\webapp\content\images\avis-professionnels_carousel.jpg') no-repeat
+    center center;
+  background-size: contain;
+}
+
+.article1 {
+  max-height: 500px;
+  max-width: 200px;
+  display: inline-block;
+  vertical-align: middle;
+  background: url('F:\Workspace\ProjetECommerce\printed.0.0.1\src\main\webapp\content\images\t_shirt_femme_article.jpg') no-repeat center
+    center;
+  background-size: contain;
+}
+
+.article2 {
+  max-height: 500px;
+  max-width: 200px;
+  display: inline-block;
+  vertical-align: middle;
+  background: url('F:\Workspace\ProjetECommerce\printed.0.0.1\src\main\webapp\content\images\t_shirt_masculin_article.jpg') no-repeat center
+    center;
+  background-size: contain;
+}
+
+.article3 {
+  max-height: 500px;
+  max-width: 200px;
+  display: inline-block;
+  vertical-align: middle;
+  background: url('F:\Workspace\ProjetECommerce\printed.0.0.1\src\main\webapp\content\images\Couleur.jpg') no-repeat center center;
+  background-size: contain;
+}
+
+.article4 {
+  max-height: 500px;
+  max-width: 200px;
+  display: inline-block;
+  vertical-align: middle;
+  background: url('F:\Workspace\ProjetECommerce\printed.0.0.1\src\main\webapp\content\images\avis-professionnels_article.jpg') no-repeat
+    center center;
   background-size: contain;
 }
 
