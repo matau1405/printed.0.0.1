@@ -12,4 +12,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FactureRepository extends MongoRepository<Facture, String> {
 
+
 }
