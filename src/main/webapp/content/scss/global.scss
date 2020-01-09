@@ -190,10 +190,16 @@ css pages produits
   margin-top: 20%;
   color: #c83660;
 }
-.margin2 {
-  font-family: Impact, 'Arial Black', Arial, Verdana, sans-serif;
-  margin-top: 40%;
-  color: #c83660;
+
+
+form {
+  color: white;
+  width: 100%;
+  padding: 30px;
+  border: 1px;
+  background: #212435;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
 }
 
 .titre {
@@ -204,6 +210,18 @@ css pages produits
 .corp {
   font-family: Verdana, sans-serif, 'Century Gothic', 'Times New Roman';
   font-size: 1.2em;
+}
+
+
+.jh-card {
+  background-color: #dee0ec !important;
+}
+
+.modal-header {
+  background-color: #f8b400;
+}
+.modal-body {
+  background-color: #f4f4f4;
 }
 
 .encadré {
