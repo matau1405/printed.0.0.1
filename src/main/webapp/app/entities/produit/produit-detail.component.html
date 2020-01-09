@@ -1,6 +1,6 @@
 
 <div class="row justify-content-left">
-    <h2><span>{{produit.nom}}</span></h2>
+    <h2><span><b>{{produit.nom}}</b></span></h2>
     <div class="col-4">
         <div *ngIf="produit">
             <hr>
@@ -16,17 +16,17 @@
                 </dd>
                 <h4 class="titre"><span>Tailles</span></h4>
                 <dd>
-                    <span class="encadré"><font size="+2"><b class="textcolor">S</b></font></span>
-                    <span> </span><span class="encadré"><font size="+2"><b class="textcolor">M</b></font></span>
-                    <span> </span><span class="encadré"><font size="+2"><b class="textcolor">L</b></font></span>
-                    <span> </span><span class="encadré"><font size="+2"><b class="textcolor">XL</b></font></span>
-                    <span> </span><span class="encadré"><font size="+2"><b class="textcolor">XXL</b></font></span>
+                    <span class="btn btn-warning"><font size="+1"><b class="textcolor">S</b></font></span>
+                    <span> </span><span class="btn btn-warning"><font size="+1"><b class="textcolor">M</b></font></span>
+                    <span> </span><span class="btn btn-warning"><font size="+1"><b class="textcolor">L</b></font></span>
+                    <span> </span><span class="btn btn-warning"><font size="+1"><b class="textcolor">XL</b></font></span>
+                    <span> </span><span class="btn btn-warning"><font size="+1"><b class="textcolor">XXL</b></font></span>
                 </dd>
                 <h4 class="titre"><span>Image</span></h4>
                 <dd>
                     <div *ngIf="produit.image">
                         <a (click)="openFile(produit.imageContentType, produit.image)">
-                            <img [src]="'data:' + produit.imageContentType + ';base64,' + produit.image" style="max-width: 100%;" alt="produit image"/>
+                            <img [src]="'data:' + produit.imageContentType + ';base64,' + produit.image" style="max-width: 100%;" alt="produit image" width="400" height="400"/>
                         </a>
                     </div>
                 </dd>
@@ -36,6 +36,17 @@
                 </dd>
 
             </dl>
+
+            <br>
+            <br>
+            <dd>
+                <div *ngIf="produit.imagePerso">
+                    <a (click)="openFile(produit.imagePersoContentType, produit.imagePerso)">
+                        <img [src]="'data:' + produit.imagePersoContentType + ';base64,' + produit.imagePerso" style="max-width: 100%;" alt="produit image" width="400" height="400"/>
+                    </a>
+                    {{produit.imagePersoContentType}}, {{byteSize(produit.imagePerso)}}
+                </div>
+            </dd>
 
             <button type="submit"
                     (click)="previousState()"
@@ -49,14 +60,14 @@
                 <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Personnaliser</span>
             </button>
 
-            <button class="btn btn-primary" [routerLink]="['/ligne-de-commande/new']">
+            <button class="btn btn-danger" [routerLink]="['/ligne-de-commande/new']">
                 <span>Ajouter au panier</span></button>
         </div>
 
 
 </div>
     <div class="row justify-content-right">
-    <h4 class="margin1"><u><b>Positionnements possibles pour vos visuels :</b></u></h4>
+        <h4 class="margin1"><u><b>Positionnements possibles pour vos visuels :</b></u></h4>
     <div class="col-4">
         <img src="../../../content/images/placement.jpg" height="400" width="600"/>
         <div class="image">
