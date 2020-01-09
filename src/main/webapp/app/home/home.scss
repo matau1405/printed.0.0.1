@@ -2,6 +2,14 @@
 Main page styles
 ========================================================================== */
 
+.bienvenu {
+  background: url('F:\Workspace\ProjetECommerce\printed.0.0.1\src\main\webapp\content\images\logoPrinted_bienvenu.jpg') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  position: center;
+  margin: auto;
+}
+
 .carousel1 {
   height: 500px;
   width: 500px;
@@ -45,9 +53,11 @@ Main page styles
   max-width: 200px;
   display: inline-block;
   vertical-align: middle;
-  background: url('F:\Workspace\ProjetECommerce\printed.0.0.1\src\main\webapp\content\images\t_shirt_femme_article.jpg') no-repeat center
+  background: url('F:\Workspace\ProjetECommerce\t_shirt_femme_article.jpg') no-repeat center
     center;
   background-size: contain;
+  box-shadow: 50px 50px 50px grey ;
+
 }
 
 .article2 {
@@ -65,16 +75,16 @@ Main page styles
   max-width: 200px;
   display: inline-block;
   vertical-align: middle;
-  background: url('F:\Workspace\ProjetECommerce\printed.0.0.1\src\main\webapp\content\images\Couleur.jpg') no-repeat center center;
+  background: url('F:\Workspace\ProjetECommerce\t_shirt_couleur_article.jpg') no-repeat center center;
   background-size: contain;
 }
 
 .article4 {
-  max-height: 500px;
+  max-height: 200px;
   max-width: 200px;
   display: inline-block;
   vertical-align: middle;
-  background: url('F:\Workspace\ProjetECommerce\printed.0.0.1\src\main\webapp\content\images\avis-professionnels_article.jpg') no-repeat
+  background: url('F:\Workspace\ProjetECommerce\avis_professionnels_article.jpg') no-repeat
     center center;
   background-size: contain;
 }

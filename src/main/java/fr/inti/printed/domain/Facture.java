@@ -27,9 +27,10 @@ public class Facture implements Serializable {
     @Id
     private String id;
 
-    @NotNull
+
     @Field("code")
     private String code;
+
 
     @NotNull
     @Field("date")
