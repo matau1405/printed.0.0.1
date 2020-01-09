@@ -37,7 +37,7 @@
             <tr *ngFor="let produit of produits ;trackBy: trackId">
 
                 <!--<td><a [routerLink]="['/produit', produit.id, 'view' ]">{{produit.id}}</a></td>-->
-                
+
                 <td>
                     <a *ngIf="produit.image" (click)="openFile(produit.imageContentType, produit.image)">
                         <img [src]="'data:' + produit.imageContentType + ';base64,' + produit.image" style="max-height: 30px;" alt="produit image"/>
@@ -68,7 +68,8 @@
                                 [routerLink]="['/produit', produit.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline">Edit</span>
+                            <span class="d-none d-md-inline" *jhiHasAnyAuthority="'ROLE_ADMIN'">Modifier</span>
+                            <span class="d-none d-md-inline" *jhiHasAnyAuthority="'ROLE_USER'">Personnaliser</span>
                         </button>
                         <li  *jhiHasAnyAuthority="'ROLE_ADMIN'">
                             <button type="submit"
@@ -80,8 +81,8 @@
                                 <span class="d-none d-md-inline">Delete</span>
                             </li>
                             </button>
-                       
-                        
+
+
                         </div>
                 </td>
             </tr>
