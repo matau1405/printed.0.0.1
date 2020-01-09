@@ -4,7 +4,7 @@
             <h2 id="jhi-ligne-de-commande-heading">Create or edit a Ligne De Commande</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
-                <div class="form-group" [hidden]="!editForm.get('id').value">
+                <div class="form-group" [hidden]="!editForm.get('id').value" *jhiHasAnyAuthority="'ROLE_ADMIN'">
                     <label for="id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id"
                         readonly />
@@ -28,10 +28,11 @@
                         </small>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="field_ptixTotal">Ptix Total</label>
+                <div class="form-group" >
+                    <label class="form-control-label" for="field_ptixTotal">Prix De La Ligne</label>
                     <input type="number" class="form-control" name="ptixTotal" id="field_ptixTotal"
-                           formControlName="ptixTotal"/>
+                           formControlName="ptixTotal" />
+
                     <div *ngIf="editForm.get('ptixTotal').invalid && (editForm.get('ptixTotal').dirty || editForm.get('ptixTotal').touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('ptixTotal').errors.required">
@@ -51,8 +52,8 @@
                     <label class="form-control-label" for="field_statut">Statut</label>
                     <select class="form-control" name="statut" formControlName="statut" id="field_statut">
                         <option value="DISPONIBLE">DISPONIBLE</option>
-                        <option value="EN_RUPTURE_DE_STOCK">EN_RUPTURE_DE_STOCK</option>
-                        <option value="COMMANDE_DIFFEREE">COMMANDE_DIFFEREE</option>
+                        <option value="EN_RUPTURE_DE_STOCK" *jhiHasAnyAuthority="'ROLE_ADMIN'">EN_RUPTURE_DE_STOCK</option>
+                        <option value="COMMANDE_DIFFEREE" *jhiHasAnyAuthority="'ROLE_ADMIN'">COMMANDE_DIFFEREE</option>
                     </select>
                     <div *ngIf="editForm.get('statut').invalid && (editForm.get('statut').dirty || editForm.get('statut').touched)">
                         <small class="form-text text-danger"
