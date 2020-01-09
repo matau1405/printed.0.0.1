@@ -62,7 +62,7 @@ public class LigneDeCommande implements Serializable {
 
     public void setQuantite(Integer quantite) {
         this.quantite = quantite;
-        this.setPtixTotal(calculPrixTotal(this).getPtixTotal());
+        //this.setPtixTotal(calculPrixTotal(this).getPtixTotal());
     }
 
     public BigDecimal getPtixTotal() {
@@ -131,10 +131,10 @@ public class LigneDeCommande implements Serializable {
             "}";
     }
 
-    
-    
-    
-    
+
+
+
+
     public LigneDeCommande() {
 		super();
 	}
@@ -158,14 +158,14 @@ public LigneDeCommande calculPrixTotal (LigneDeCommande ldc){
 	BigDecimal quant = new BigDecimal(ldc.getQuantite());
 	BigDecimal res = new BigDecimal(0);
 	res = ldc.produit.getPrix().multiply(quant);
-	
+
         ldc.setPtixTotal(res);
         return ldc;
 }
 
 public BigDecimal calculPrixPanier (LigneDeCommande[] listLDC){
     BigDecimal prixPanier = new BigDecimal(0);
-    
+
     for(int i=0 ;i<listLDC.length; i++){
         prixPanier = prixPanier.add(listLDC[i].getPtixTotal());
     }
