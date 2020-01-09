@@ -1,14 +1,14 @@
 <div>
     <h2 id="page-heading">
         <span>Produits</span>
-        <li  *jhiHasAnyAuthority="'ROLE_ADMIN'">
+        <ul *jhiHasAnyAuthority="'ROLE_ADMIN'">
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-produit" [routerLink]="['/produit/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
             Create a new Produit
             </span>
         </button>
-        </li>
+    </ul>
     </h2>
     <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
@@ -16,13 +16,16 @@
     <div class="alert alert-warning" *ngIf="produits?.length === 0">
         <span>No produits found</span>
     </div>
+
+    
+    <!--
     <div class="table-responsive" *ngIf="produits?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">-->
 
                 <!--<th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
-
+<!--
             <th scope="col"  jhiSortBy="image"><span>Image</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="nom"><span>Nom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="description"><span>Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -34,11 +37,10 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let produit of produits ;trackBy: trackId">
+            <tr *ngFor="let produit of produits ;trackBy: trackId"> -->
 
                 <!--<td><a [routerLink]="['/produit', produit.id, 'view' ]">{{produit.id}}</a></td>-->
-
-                <td>
+            <!-- <td>
                     <a *ngIf="produit.image" (click)="openFile(produit.imageContentType, produit.image)">
                         <img [src]="'data:' + produit.imageContentType + ';base64,' + produit.image" style="max-height: 30px;" alt="produit image"/>
                     </a>
@@ -50,7 +52,9 @@
                 <td>{{produit.taille}}</td>
 
                 <td>{{produit.personnalisable}}</td>
+              
                 <td>
+                    
                     <a *ngIf="produit.imagePerso" (click)="openFile(produit.imagePersoContentType, produit.imagePerso)">
                         <img [src]="'data:' + produit.imagePersoContentType + ';base64,' + produit.imagePerso" style="max-height: 30px;" alt="produit image"/>
                     </a>
@@ -83,18 +87,63 @@
                             </button>
 
 
+                        
                         </div>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
-    <div [hidden]="produits?.length === 0">
-        <div class="row justify-content-center">
-            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+
+-->
+
+
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-12"></div>
+          <div *ngFor="let produit of produits ;trackBy: trackId">
+          <div class="col-md-3">
+            
+            <li class="list-group-item" style="width: 18rem;  background-color:transparent" >
+            <a [routerLink]="['/produit', produit.id, 'view' ]">
+                <p style="text-align: center; font-size: x-large;">{{produit.nom}}</p>
+            </h5></a></li>
+        <a [routerLink]="['/produit', produit.id, 'view' ]" div class="card"style="width: 18rem;"  >
+                   <img [src]="'data:' + produit.imageContentType + ';base64,' + produit.image" style="height: 400px;" alt="produit image" >
+                </a [routerLink]="['/produit', produit.id, 'view' ]" div>
+              <ul class="list-group list-group-flush"></ul>
+                <li class="list-group-item" style="width: 18rem; background-color: transparent; font-size: large" >
+                    <p style="text-align: center;">{{produit.prix}} €</p>
+                </li>
+                <li *jhiHasAnyAuthority="'ROLE_ADMIN'" class="list-group-item" style="width: 18rem; background-color: transparent; font-size: large" >
+                    <button type="submit"
+                    [routerLink]="['/produit', produit.id, 'edit']"
+                    class="btn btn-primary btn-sm">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                <span class="d-none d-md-inline">Modifier</span>
+                </li>
+                <li *jhiHasAnyAuthority="'ROLE_ADMIN'" class="list-group-item" style="width: 18rem; background-color: transparent; font-size: large" >
+                    <button type="submit"
+                    [routerLink]="['/produit', { outlets: { popup: produit.id + '/delete'} }]"
+                    replaceUrl="true"
+                    queryParamsHandling="merge"
+                    class="btn btn-danger btn-sm">
+                <fa-icon [icon]="'times'"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+                </li>
+              </ul>
+              <br>
+          </div>
         </div>
-        <div class="row justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+   
+ 
+        <div [hidden]="produits?.length === 0">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
         </div>
     </div>
-</div>

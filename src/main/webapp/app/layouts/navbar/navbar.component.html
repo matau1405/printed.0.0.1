@@ -12,7 +12,7 @@
                 <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
                     <span>
                         <fa-icon icon="home"></fa-icon>
-                        <span>Acceuil</span>
+                        <span>Accueil</span>
                     </span>
                 </a>
             </li>
@@ -44,7 +44,7 @@
         </span>
     </a>
 </li>
-<li *ngSwitchCase="true" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+<li *jhiHasAnyAuthority="'ROLE_ADMIN'"  class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
     <a class="nav-link" routerLink="expedition" (click)="collapseNavbar()">
         <span>
             <span>Expedition</span>
