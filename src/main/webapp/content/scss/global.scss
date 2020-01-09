@@ -181,31 +181,43 @@ ui bootstrap tweaks
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */
 
-#container h1 {
-  width: 100%;
-  margin: 0 auto;
-  padding-bottom: 10px;
-}
-form {
-  width: 100%;
-  padding: 30px;
-  border: 1px solid #f1f1f1;
-  background: #f6d365;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+/* ==========================================================================
+css pages produits
+========================================================================== */
+
+.margin1 {
+  font-family: Impact, 'Arial Black', Arial, Verdana, sans-serif;
+  margin-top: 20%;
+  color: #c83660;
 }
 
-.form-control {
-  background-color: #ede59a;
-  font-weight: bold;
+.titre {
+  font-family: Verdana, sans-serif, 'Century Gothic', 'Times New Roman';
+  font-size: 1.4em;
 }
 
-.jh-card {
-  background-color: #ed8240 !important;
+.corp {
+  font-family: Verdana, sans-serif, 'Century Gothic', 'Times New Roman';
+  font-size: 1.2em;
 }
 
-.modal-header {
-  background-color: #d5c455;
+.encadré {
+  border-width: 2px 2px 2px 2px;
+  border-style: solid;
+  border-color: #3a1f5d;
+  background-color: #f6d365;
+  display: inline-block;
 }
-.modal-body {
-  background-color: #ede59a;
+
+.textcolor {
+  color: #3a1f5d;
+}
+boutonpanier {
+  background-color: #e15249;
+}
+
+.image {
+  margin-right: 40%;
+
 }
