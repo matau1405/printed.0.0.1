@@ -1,7 +1,7 @@
 <div id="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1>Registration</h1>
+            <h1>Créer un compte</h1>
 
             <div class="alert alert-success" *ngIf="success">
                 <strong>Registration saved!</strong> Please check your email for confirmation.
@@ -29,8 +29,8 @@
             <form name="form" role="form" (ngSubmit)="register()" [formGroup]="registerForm" *ngIf="!success">
                 <div class="form-group">
 
-                    <label class="form-control-label" for="login">Username</label>
-                    <input type="text" class="form-control" id="login" name="login" placeholder="Your username"
+                    <label class="form-control-label" for="login">Nom d'utilisateur</label>
+                    <input type="text" class="form-control" id="login" name="login" placeholder="Votre Nom d'utilisateur"
                            formControlName="login">
                     <div *ngIf="registerForm.get('login').invalid && (registerForm.get('login').dirty || registerForm.get('login').touched)">
                         <small class="form-text text-danger" *ngIf="registerForm.get('login').errors.required">
@@ -52,7 +52,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Your email"
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Votre email"
                              formControlName="email">
                     <div *ngIf="registerForm.get('email').invalid && (registerForm.get('email').dirty || registerForm.get('email').touched)">
                         <small class="form-text text-danger" *ngIf="registerForm.get('email').errors.required"
@@ -74,8 +74,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="password">New password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="New password"
+                    <label class="form-control-label" for="password">Nouveau Mot de passe</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Nouveau Mot de passe"
                             formControlName="password">
                     <div *ngIf="registerForm.get('password').invalid && (registerForm.get('password').dirty || registerForm.get('password').touched)">
                         <small class="form-text text-danger" *ngIf="registerForm.get('password').errors.required"
@@ -94,8 +94,8 @@
                     <jhi-password-strength-bar [passwordToCheck]="registerForm.get('password').value"></jhi-password-strength-bar>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="confirmPassword">New password confirmation</label>
-                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm the new password"
+                    <label class="form-control-label" for="confirmPassword">Confirmation du nouveau mot de passe</label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirmation de votre nouveau mot de passe"
                             formControlName="confirmPassword">
                     <div *ngIf="registerForm.get('confirmPassword').invalid && (registerForm.get('confirmPassword').dirty || registerForm.get('confirmPassword').touched)">
                         <small class="form-text text-danger" *ngIf="registerForm.get('confirmPassword').errors.required"
@@ -113,7 +113,7 @@
                     </div>
                 </div>
 
-                <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Register</button>
+                <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Créer un compte </button>
             </form>
             <p></p>
 
