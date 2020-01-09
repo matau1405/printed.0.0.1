@@ -181,7 +181,6 @@ ui bootstrap tweaks
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */
 
-
 /* ==========================================================================
 css pages produits
 ========================================================================== */
@@ -199,12 +198,11 @@ form {
   border: 1px;
   background: #212435;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-
+}
 
 .titre {
   font-family: Verdana, sans-serif, 'Century Gothic', 'Times New Roman';
   font-size: 1.4em;
-
 }
 
 .corp {
@@ -221,7 +219,8 @@ form {
 }
 .modal-body {
   background-color: #f4f4f4;
-=======
+}
+
 .encadré {
   border-width: 2px 2px 2px 2px;
   border-style: solid;
@@ -239,6 +238,4 @@ boutonpanier {
 
 .image {
   margin-right: 40%;
-
-
 }
