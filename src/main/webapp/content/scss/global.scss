@@ -187,10 +187,11 @@ ui bootstrap tweaks
   padding-bottom: 10px;
 }
 form {
+  color: white;
   width: 100%;
   padding: 30px;
-  border: 1px solid #f1f1f1;
-  background: #f6d365;
+  border: 1px;
+  background: #212435;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
@@ -200,12 +201,12 @@ form {
 }
 
 .jh-card {
-  background-color: #ed8240 !important;
+  background-color: #dee0ec !important;
 }
 
 .modal-header {
-  background-color: #d5c455;
+  background-color: #f8b400;
 }
 .modal-body {
-  background-color: #ede59a;
+  background-color: #f4f4f4;
 }

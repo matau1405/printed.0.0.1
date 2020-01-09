@@ -35,7 +35,7 @@
             <tr *ngFor="let produit of produits ;trackBy: trackId">
 
                 <!--<td><a [routerLink]="['/produit', produit.id, 'view' ]">{{produit.id}}</a></td>-->
-                
+
                 <td>
                     <a *ngIf="produit.image" (click)="openFile(produit.imageContentType, produit.image)">
                         <img [src]="'data:' + produit.imageContentType + ';base64,' + produit.image" style="max-height: 30px;" alt="produit image"/>
