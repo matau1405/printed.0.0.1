@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
 import { JhiResolvePagingParams } from 'ng-jhipster';
-import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
+// import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { Observable, of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { Produit } from 'app/shared/model/produit.model';
@@ -40,8 +40,8 @@ export const produitRoute: Routes = [
       authorities: ['ROLE_USER'],
       defaultSort: 'id,asc',
       pageTitle: 'Produits'
-    },
-    canActivate: [UserRouteAccessService]
+    }
+    // canActivate: [UserRouteAccessService]
   },
   {
     path: ':id/view',
@@ -52,8 +52,8 @@ export const produitRoute: Routes = [
     data: {
       authorities: ['ROLE_USER'],
       pageTitle: 'Produits'
-    },
-    canActivate: [UserRouteAccessService]
+    }
+    // canActivate: [UserRouteAccessService]
   },
   {
     path: 'new',
@@ -64,8 +64,8 @@ export const produitRoute: Routes = [
     data: {
       authorities: ['ROLE_USER'],
       pageTitle: 'Produits'
-    },
-    canActivate: [UserRouteAccessService]
+    }
+    // canActivate: [UserRouteAccessService]
   },
   {
     path: ':id/edit',
@@ -76,8 +76,8 @@ export const produitRoute: Routes = [
     data: {
       authorities: ['ROLE_USER'],
       pageTitle: 'Produits'
-    },
-    canActivate: [UserRouteAccessService]
+    }
+    // canActivate: [UserRouteAccessService]
   }
 ];
 
@@ -92,7 +92,7 @@ export const produitPopupRoute: Routes = [
       authorities: ['ROLE_USER'],
       pageTitle: 'Produits'
     },
-    canActivate: [UserRouteAccessService],
+    // canActivate: [UserRouteAccessService],
     outlet: 'popup'
   }
 ];

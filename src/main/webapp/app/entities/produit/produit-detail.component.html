@@ -1,61 +1,71 @@
-<div class="row justify-content-center">
-    <div class="col-8">
+
+<div class="row justify-content-left">
+    <h2><span>{{produit.nom}}</span></h2>
+    <div class="col-4">
         <div *ngIf="produit">
-            <h2><span>Produit</span> {{produit.id}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span>Nom</span></dt>
+                <h4 class="titre"><span>Description</span></h4>
                 <dd>
-                    <span>{{produit.nom}}</span>
+                    <span class="corp"><b><i>{{produit.description}}</i></span></b></span>
                 </dd>
-                <dt><span>Description</span></dt>
+                <h4 class="titre"><span>Prix</span></h4>
                 <dd>
-                    <span>{{produit.description}}</span>
+                    <span class="corp"><b>{{produit.prix}} euros/unité</b></span>
                 </dd>
-                <dt><span>Prix</span></dt>
+                <h4 class="titre"><span>Tailles</span></h4>
                 <dd>
-                    <span>{{produit.prix}}</span>
+                    <span class="encadré"><font size="+2"><b class="textcolor">S</b></font></span>
+                    <span> </span><span class="encadré"><font size="+2"><b class="textcolor">M</b></font></span>
+                    <span> </span><span class="encadré"><font size="+2"><b class="textcolor">L</b></font></span>
+                    <span> </span><span class="encadré"><font size="+2"><b class="textcolor">XL</b></font></span>
+                    <span> </span><span class="encadré"><font size="+2"><b class="textcolor">XXL</b></font></span>
                 </dd>
-                <dt><span>Taille</span></dt>
-                <dd>
-                    <span>{{produit.taille}}</span>
-                </dd>
-                <dt><span>Image</span></dt>
+                <h4 class="titre"><span>Image</span></h4>
                 <dd>
                     <div *ngIf="produit.image">
                         <a (click)="openFile(produit.imageContentType, produit.image)">
                             <img [src]="'data:' + produit.imageContentType + ';base64,' + produit.image" style="max-width: 100%;" alt="produit image"/>
                         </a>
-                        {{produit.imageContentType}}, {{byteSize(produit.image)}}
                     </div>
                 </dd>
-                <dt><span>Personnalisable</span></dt>
-                <dd>
+                <dt *jhiHasAnyAuthority="'ROLE_ADMIN'"><span>Personnalisable</span></dt>
+                <dd *jhiHasAnyAuthority="'ROLE_ADMIN'">
                     <span>{{produit.personnalisable}}</span>
                 </dd>
-                <dt><span>Image Perso</span></dt>
-                <dd>
-                    <div *ngIf="produit.imagePerso">
-                        <a (click)="openFile(produit.imagePersoContentType, produit.imagePerso)">
-                            <img [src]="'data:' + produit.imagePersoContentType + ';base64,' + produit.imagePerso" style="max-width: 100%;" alt="produit image"/>
-                        </a>
-                        {{produit.imagePersoContentType}}, {{byteSize(produit.imagePerso)}}
-                    </div>
-                </dd>
+
             </dl>
 
             <button type="submit"
                     (click)="previousState()"
                     class="btn btn-info">
-                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Accueil</span>
             </button>
 
             <button type="button"
                     [routerLink]="['/produit', produit.id, 'edit']"
                     class="btn btn-primary">
-                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Personnaliser</span>
             </button>
+
+            <button class="btn btn-primary" [routerLink]="['/ligne-de-commande/new']">
+                <span>Ajouter au panier</span></button>
+        </div>
+
+
+</div>
+    <div class="row justify-content-right">
+    <h4 class="margin1"><u><b>Positionnements possibles pour vos visuels :</b></u></h4>
+    <div class="col-4">
+        <img src="../../../content/images/placement.jpg" height="400" width="600"/>
+        <div class="image">
+            <img src="../../../content/images/guidetaille.jpg" height="400" width="600"/>
+
         </div>
     </div>
+
 </div>
+
+
+

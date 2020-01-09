@@ -1,12 +1,16 @@
 <div>
     <h2 id="page-heading">
         <span>Ligne De Commandes</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-ligne-de-commande" [routerLink]="['/ligne-de-commande/new']">
-            <fa-icon [icon]="'plus'"></fa-icon>
-            <span >
-            Create a new Ligne De Commande
-            </span>
-        </button>
+        <li  *jhiHasAnyAuthority="'ROLE_ADMIN'">
+            <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-ligne-de-commande" [routerLink]="['/ligne-de-commande/new']">
+                <fa-icon [icon]="'plus'"></fa-icon>
+                <span >
+                Create a new Ligne De Commande
+                </span>
+            </button>
+        </li>
+        <p>Le prix du Panier : </p>
+
     </h2>
     <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
@@ -30,7 +34,7 @@
             <tr *ngFor="let ligneDeCommande of ligneDeCommandes ;trackBy: trackId">
                 <td><a [routerLink]="['/ligne-de-commande', ligneDeCommande.id, 'view' ]">{{ligneDeCommande.id}}</a></td>
                 <td>{{ligneDeCommande.quantite}}</td>
-                <td>{{ligneDeCommande.ptixTotal}}</td>
+                <td>{{ligneDeCommande.quantite * ligneDeCommande.produit?.prix}}</td>
                 <td>{{ligneDeCommande.statut}}</td>
                 <td>
                     <div *ngIf="ligneDeCommande.produit">
