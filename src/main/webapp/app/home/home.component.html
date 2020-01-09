@@ -1,41 +1,114 @@
-<div class="row">
-    <div class="col-md-3">
-        <span class="hipster img-fluid rounded"></span>
-    </div>
-    <div class="col-md-9" >
-        <h1 class="display-4">Welcome, Print'ed!</h1>
-        <p class="lead">This is your homepage</p>
 
-        <div [ngSwitch]="isAuthenticated()">
-            <div class="alert alert-success" *ngSwitchCase="true">
-                <span id="home-logged-message" *ngIf="account"
-                   > You are logged in as user "{{account.login}}". </span>
+
+    <!-- Carousel: -->
+
+    <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+
+      <!--   <ol class="carousel-indicators">
+            <li data-target="#Carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#Carousel" data-slide-to="1"></li>
+            <li data-target="#Carousel" data-slide-to="2"></li>
+            <li data-target="#Carousel" data-slide-to="3"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+
+        <!-- <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="../../content/images/t_shirt_femme_carousel.jpg" id="carousel1">
+                <div class="carousel-caption">
+                    <h2>Comment bien choisir son t-shirt féminin?</h2>
+                </div>
             </div>
 
-            <div class="alert alert-warning" *ngSwitchCase="false">
-                <span>If you want to </span>
-                <a class="alert-link" (click)="login()">sign in</a><span>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>
+            <div class="item">
+                <img src="../../content/images/t_shirt_masculin_carousel.jpg" id="carousel2">
+                <div class="carousel-caption">
+                    <h2>Comment bien choisir son t-shirt masculin?</h2>
+                </div>
             </div>
-            <div class="alert alert-warning" *ngSwitchCase="false">
-                <span>You don't have an account yet?</span>&nbsp;
-                <a class="alert-link" routerLink="account/register">Register a new account</a>
+
+            <div class="item">
+                <img src="../../content/images/Couleur.jpg" id="carousel3">
+                <div class="carousel-caption">
+                    <h2>Quelles sont les couleurs tendances de cet hiver ?</h2>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="../../content/images/avis-professionnels_carousel.jpg" id="carousel4">
+                <div class="carousel-caption">
+                    <h2>Besoin d'un avis professionnel ?</h2>
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+
+          <!-- <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div>
+
+    </div> -->
+
+    <!-- Fin du carousel -->
+
+    <!-- Featurette: -->
+    <div class="container-fluid">
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class=" col-md-9">
+                <h2 class="featurette-heading">Comment bien choisir son t-shirt féminin ?<span class="text-muted">Symbole du style décontracté!</span></h2>
+                <p class="lead">Version contemporaine du chemisier, le tee-shirt est le symbole du style décontracté. Grâce à l’évolution des techniques d’impression sur le textile, il est devenu aujourd’hui un moyen de communiquer des goûts et de partager des messages.Sa grande variété de couleurs et de motifs ou son accessibilité en termes de prix facilite le renouvellement saisonnier. Bien choisi et associé à des vêtements appropriés, le tee-shirt peut sublimer votre look et apporter plus d’originalité à votre silhouette.</p>
+            </div>
+            <div class="col-md-3">
+                <img src="../../content/images/t_shirt_femme_article.jpg" id="article1">
             </div>
         </div>
 
-        <p>
-            If you have any question on JHipster:
-        </p>
+        <hr class="featurette-divider">
 
-        <ul>
-            <li><a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">JHipster homepage</a></li>
-            <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer">JHipster on Stack Overflow</a></li>
-            <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener noreferrer">JHipster bug tracker</a></li>
-            <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">JHipster public chat room</a></li>
-            <li><a href="https://twitter.com/java_hipster" target="_blank" rel="noopener noreferrer">follow @java_hipster on Twitter</a></li>
-        </ul>
+        <div class="row featurette">
+            <div class="col-md-3">
+                <img src="../../content/images/t_shirt_masculin_article.jpg" id="article2">
+            </div>
+            <div class="col-md-9">
+                <h2 class="featurette-heading">Comment bien choisir son t-shirt masculin ?<span class="text-muted">Le T-shirt blanc.</span></h2>
+                <p class="lead">Pendant longtemps j’ai négligé ce vêtement. Je l’avais relégué au rang de sous-vêtement ou de pyjama. Je ne le portais qu’en dessous de mes tenues, ce qui est d’ailleurs son utilité principale à l’origine. Jusque récemment je n’avais que quelque t-shirts dans ma penderie. C’est dire ! Pour parler du t-shirt, je vais me concentrer sur le modèle le plus basique : le t-shirt blanc. Mais tous mes conseils sont applicables à tous les t-shirts pour homme.</p>
+            </div>
+        </div>
 
-        <p>
-            <span>If you like JHipster, don't forget to give us a star on</span> <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">GitHub</a>!
-        </p>
-    </div>
-</div>
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-9">
+                <h2 class="featurette-heading">Quelles sont les couleurs tendances de cet hiver ?<span class="text-muted">Winter is comming!</span></h2>
+                <p class="lead">Lorsque l'on est enfant, une des choses que l'on redoute le plus, c'est de voir arriver sa mère avec un t-shirt à peine acheté et dont la couleur est susceptible de déclencher les rires de ses camarades. Les possibilités en termes de coloris sont quasiment infinies dans le domaine du textile. Les t-shirts n'échappent pas à la règle. Plus encore, ils sont souvent le prétexte pour ajouter une note colorée à une tenue. Les enfants ne le savent que trop bien. Ils sont les premières ''victimes'' des fautes de goût que cela peut occasionner ! Qui n'a jamais été obligé de porter un t-shirt coloré qui ne lui plaisait pas ? Peu importe du type de t-shirt dont on parle, les coloris sont le moyen de décliner un modèle en différentes versions. Le modèle à manches courtes et à col rond est probablement celui qui est le plus représentatif de ce panel de possibilités.</p>
+            </div>
+            <div class="col-md-3">
+                <img src="../../content/images/Couleur.jpg" id="article3">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-3">
+                <img src="../../content/images/avis-professionnels_article.jpg" id="article4">
+            </div>
+            <div class="col-md-9">
+                <h2 class="featurette-heading">Besoin d'aide ? D'un conseil ? Ou de l'avis d'un professionnel ?<span class="text-muted"> Nous sommes là!</span></h2>
+                <p class="lead">La personnalisation textile est devenue la base de la communication lors des événements ou pour les entreprises. Si tout le monde peut comprendre la différence entre un sweat à capuche et un t-shirt en coton bio, il est déjà plus difficile de s'y retrouver dans les techniques de marquage textile. Broderie ou sérigraphie ? Impression ou flocage ? Voici quelques éléments de réponse.</p>
+            </div>
+        </div>
+
+    </div><!-- /.container -->
